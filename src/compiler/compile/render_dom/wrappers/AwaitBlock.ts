@@ -268,10 +268,10 @@ export default class AwaitBlockWrapper extends Wrapper {
 			${info} = null;
 		`);
 
+		this.then.render_destructure(block, this.value, this.node.value, value_index);
+		this.catch.render_destructure(block, this.error, this.node.error, error_index);
 		[this.pending, this.then, this.catch].forEach(branch => {
 			branch.render(branch.block, null, x`#nodes` as Identifier);
 		});
-		this.then.render_destructure(block, this.value, this.node.value, value_index);
-		this.catch.render_destructure(block, this.error, this.node.error, error_index);
 	}
 }
